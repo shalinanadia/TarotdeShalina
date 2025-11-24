@@ -861,7 +861,7 @@ const urlsImagens = {
     '49': 'imagens/reicopas.png',
 
     // --- ARCANOS MENORES: ESPADAS (50 a 63) ---
-    '50': 'imagens/asespadas.jpg',
+    '50': 'imagens/asespadas.png',
     '51': 'imagens/2espadas.png',
     '52': 'imagens/3espadas.png',
     '53': 'imagens/4espadas.png',
