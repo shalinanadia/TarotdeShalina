@@ -1,0 +1,729 @@
+:root {
+            /* Paleta Místico Vintage: Bordô, Dourado e Neutro Escuro */
+            --cor-principal: #800020; /* Bordô Escuro */
+            --cor-secundaria: #DAA520; /* Dourado */
+            --cor-fundo: #000000; /* Preto para fundo */
+            --cor-texto: #F5F5DC; /* Bege Claro para contraste */
+            --sombra-texto: 0 0 5px rgba(255, 255, 255, 0.5);
+            --sombra-dourada: 0 0 15px var(--cor-secundaria), 0 0 5px var(--cor-secundaria);
+        }
+ 
+        html, body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+          text-align: center;
+            
+            /* IMAGEM DE FUNDO DO USUÁRIO CORRETA */
+            background-image: url('https://i.imgur.com/1w6V9Fp.jpeg'); 
+ 
+            background-size: cover;
+            background-attachment: fixed;
+            padding-top: 50px; 
+        }
+ 
+        .container {
+            background-color: transparent; 
+            box-shadow: none; 
+            padding: 30px 40px; 
+            border-radius: 15px;
+            max-width: 1200px;
+            width: 90%;
+            text-align: center;
+        }
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            padding: 30px 0;
+            flex-grow: 1; 
+        }
+
+        header {
+    width: 100%;
+    padding: 20px 0;
+    /* Alinhamento para centralizar o conteúdo (foto + h1) */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* NOVO: Garante o alinhamento vertical */
+    
+    text-align: center; /* MANTENHA, mas o flexbox fará o trabalho */
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-bottom: 2px solid var(--cor-secundaria); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+ 
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--cor-secundaria);
+            text-shadow: var(--sombra-dourada);
+            margin-bottom: 0px;
+            font-size: 2.5em;
+        }
+/* Contêiner interno para alinhamento da foto e título */
+.header-content {
+    display: flex;
+    align-items: center; /* Alinha a foto e o H1 verticalmente no centro */
+    justify-content: center; /* Centraliza a foto e o H1 no cabeçalho */
+    gap: 20px; /* Espaço entre a foto e o H1 */
+    max-width: 1200px; /* Limita a largura se necessário, como o main */
+    width: 90%;
+}
+/* ESTILO DA FOTO DE PERFIL NO CABEÇALHO */
+.foto-perfil-header {
+    width: 150px;         /* Tamanho da foto no header */
+    height: 250px;
+    border-radius: 50%;  /* Deixa a foto circular */
+    object-fit: cover;   /* Garante que a imagem preencha o círculo */
+    border: 3px solid var(--cor-secundaria); /* Borda dourada */
+    box-shadow: 0 0 10px rgba(218, 165, 32, 0.7); /* Sombra suave */
+    transition: transform 0.3s ease-in-out;
+    flex-shrink: 0; /* Impede que a foto encolha */
+}
+.foto-perfil-header:hover {
+    transform: scale(1.1); /* Zoom sutil */
+}
+        .controles {
+            background-color: rgba(30, 0, 0, 0.85); 
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+          margin-top: 0;
+        }
+
+        .controles label, .controles input, .controles select {
+            color: var(--cor-texto);
+            font-size: 1em;
+        }
+
+        .controles input[type="text"], .controles select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--cor-secundaria);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--cor-texto);
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        
+        .controles select {
+            appearance: none; 
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23DAA520'%3e%3cpath d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%;
+            background-size: 12px;
+            cursor: pointer;
+        }
+ 
+        button {
+            background-color: var(--cor-principal);
+            color: var(--cor-texto);
+            border: 2px solid var(--cor-secundaria);
+            padding: 12px 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+ 
+        button:hover {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-fundo);
+            box-shadow: var(--sombra-dourada);
+        }
+ 
+        #resultado {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+ 
+        .carta {
+            flex: 1 1 300px; 
+            max-width: 300px;
+            height: 450px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(30, 0, 0, 0.9);
+            border: 3px solid var(--cor-principal);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+ 
+        .carta.carta-revelada:hover {
+            transform: translateY(-3px); 
+            box-shadow: var(--sombra-dourada);
+            z-index: 10; 
+        }
+ 
+        .carta-virada {
+            background-color: var(--cor-principal);
+            border: 3px solid var(--cor-secundaria);
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            text-shadow: var(--sombra-texto);
+ 
+            animation: breath 4s ease-in-out infinite alternate;
+        }
+ 
+        .carta-virada:hover {
+            animation: none; 
+            transform: translateY(-3px); 
+            box-shadow: var(--sombra-dourada);
+            z-index: 10;
+        }
+ 
+        @keyframes breath {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(218, 165, 32, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 0 20px var(--cor-secundaria); } 
+        }
+ 
+        .carta-revelada {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            box-shadow: 0 0 10px rgba(218, 165, 32, 0.6);
+            will-change: opacity, transform; 
+            transform: translateZ(0); 
+        }
+ 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+ 
+        .carta-revelada h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--cor-secundaria);
+            font-size: 1.1em; 
+            text-shadow: var(--sombra-texto);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        /* AJUSTE MAIOR: Aumenta a fonte das interpretações da carta */
+        .carta-revelada p {
+            font-size: 1.2em; 
+            line-height: 1.6;
+            text-align: left;
+        }
+
+ 
+        .conselho-final {
+            max-width: 750px; 
+            margin: 30px auto 0 auto; 
+            width: 100%;
+            padding: 30px 25px; 
+            border: 3px solid var(--cor-secundaria); 
+            border-radius: 10px;
+            background-color: rgba(128, 0, 32, 0.6); 
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.8); 
+            opacity: 0; 
+            animation: fadeIn 1s ease-out forwards;
+            text-align: left; 
+        }
+ 
+        .conselho-final h3 {
+            color: var(--cor-secundaria);
+            font-family: 'Cinzel', serif;
+            text-shadow: var(--sombra-dourada); 
+            font-size: 1.8em; 
+            margin-top: 0;
+            margin-bottom: 25px; 
+            text-align: center; 
+        }
+ 
+        .conselho-final ul {
+            list-style: none; 
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+ 
+        .conselho-final li {
+            font-size: 1.3em; 
+            line-height: 1.6; 
+            font-style: italic; 
+            margin-bottom: 18px; 
+            padding-left: 20px;
+            text-indent: -20px; 
+        }
+        
+        .conselho-final .combinacao-forcas {
+            font-size: 1.3em; 
+            line-height: 1.5;
+            margin-top: 15px; 
+            font-weight: 400; 
+            color: var(--cor-texto);
+        }
+        
+        .conselho-final .combinacao-forcas .carta-nome {
+            font-weight: 600; 
+            color: var(--cor-secundaria);
+        }
+
+        .conselho-final .verbo-mestre {
+            text-align: center;
+            font-size: 1.75em; 
+            font-weight: 700;
+            font-style: normal; 
+            color: var(--cor-secundaria);
+            padding: 20px 10px;
+            border-top: 3px double var(--cor-secundaria); 
+            border-bottom: 3px double var(--cor-secundaria);
+            margin: 25px 0;
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+ 
+        .conselho-final .conclusao-solene {
+            text-align: center;
+            font-size: 1.15em; 
+            font-weight: 400; 
+            font-style: italic;
+            margin-top: 20px;
+            color: var(--cor-texto);
+        }
+ 
+        .imagem-carta {
+            width: 100%;
+            height: auto;
+            max-width: 250px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: transform 0.5s ease;
+        }
+ 
+        .imagem-invertida {
+            transform: rotate(180deg);
+        }
+ 
+       /* ========================================= */
+/* RODAPÉ (FOOTER) E CONTATO CORRIGIDO */
+/* ========================================= */
+
+footer {
+    /* Combinando suas regras antigas e as novas */
+    width: 100%;
+    text-align: center !important;
+    padding: 20px 0; 
+    margin-top: auto;
+    background-color: rgba(30, 0, 0, 0.9);
+    border-top: 2px solid var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+}
+
+/* 1. CONTÊINER PRINCIPAL: Alinha a foto ao lado do texto de contato */
+.contato-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 15px auto; 
+    padding: 0 15px;
+}
+
+/* 2. ESTILO DA FOTO NO RODAPÉ */
+.foto-perfil-footer {
+    width: 150px;
+    height: 250px;
+    border-radius: 50%; /* Torna a foto redonda */
+    margin-right: 20px;
+    border: 3px solid var(--cor-secundaria); /* Moldura dourada */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; 
+}
+
+/* 3. ESTILOS DO TEXTO DE CONTATO */
+.cta-frase {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--cor-secundaria); /* Chamada em destaque */
+    margin-bottom: 5px;
+}
+
+/* 4. ESTILO DO LINK DO WHATSAPP */
+.contato-whatsapp {
+    color: #8FBC8F;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 5px;
+}
+.assinatura-final {
+    text-align: center !important; 
+    width: 100%;
+    margin-top: 15px; 
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* 5. SUA ASSINATURA ORIGINAL (mantendo o estilo místico antigo) */
+.assinatura-original {
+    font-family: 'Crimson Text', serif;
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-size: 1.1em; 
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+/* 6. ESTILO DO TEXTO DE DIREITOS AUTORAIS/MENSAGEM FINAL */
+.direitos-autorais {
+    /* Copiando o estilo de .assinatura-original */
+    font-family: 'Crimson Text', serif;
+    color: var(--cor-secundaria);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-size: 1.1em; /* O mesmo tamanho da assinatura */
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    
+    /* ADIÇÕES FINAIS PARA GARANTIR A CENTRALIZAÇÃO: */
+    display: block;   /* Garante que seja um bloco, e não um inline-block restrito */
+    width: 100%;      /* Garante que ocupe a largura total do footer */
+    
+    /* Mantenha suas margens, mas adicione 'auto' para centralizar o bloco */
+    margin: 5px auto; /* Combina margin-top/bottom e centraliza o bloco */
+    
+    /* Limpeza de alinhamento que pode estar herdando */
+    text-align: center; /* Manter se o body não for alterado */
+}
+        @media (min-width: 1100px) {
+            .carta[style*="18%"] {
+                max-width: 200px;
+                flex: 1 1 18%;
+            }
+        }
+ 
+        @media (max-width: 600px) {
+    /* 1. REGRA DO CONTAINER: Feche-a corretamente */
+    .container {
+        width: 95%;
+        padding: 20px 10px;
+      .card-container {
+        width: 250px; 
+        height: 700px; /* <--- NOVO TAMANHO PARA CABER A INTERPRETAÇÃO */
+        margin: 0 10px;
+        .contato-container {
+        flex-direction: column; 
+    }
+    
+    .foto-perfil-footer {
+        margin-right: 0;
+        margin-bottom: 15px; 
+    }
+    } 
+
+    /* 2. INÍCIO DAS NOVAS REGRAS: Depois de fechar a regra anterior */
+    .foto-perfil-header {
+        width: 65px;
+        height: 65px;
+    }
+    .header-content {
+        gap: 10px; /* Reduz o espaço entre a foto e o H1 */
+    }
+    header h1 {
+        font-size: 1.8em; /* Reduz o tamanho do título */
+    }
+    /* 3. Continue com suas outras regras de mobile... */
+    /* Por exemplo: */
+    /* .controles { grid-template-columns: 1fr; } */
+    /* .carta { flex: 1 1 100%; } */
+}
+            .controles {
+                grid-template-columns: 1fr;
+            }
+            .carta {
+                flex: 1 1 100%; 
+                max-width: 95%;
+                margin: 10px auto; 
+            }
+            .conselho-final {
+                max-width: 100%; 
+                margin: 30px auto 0 auto;
+                text-align: left; 
+            }
+            .carta-revelada p {
+                 font-size: 1.1em; 
+            }
+            .conselho-final li {
+                padding-left: 0;
+                text-indent: 0; 
+                font-size: 1.15em; 
+            }
+            .conselho-final .verbo-mestre {
+                 font-size: 1.25em;
+            }
+            .assinatura {
+                 font-size: 1.2em;
+            }
+             #perguntaUsuario {
+                width: 100%; 
+                box-sizing: border-box; 
+            }
+            .controles button, .controles select, .controles label {
+                display: block;
+                width: 100%;
+                margin-top: 10px;
+                box-sizing: border-box;
+            }
+            .controles button {
+                padding: 15px 10px;
+                font-size: 1em;
+            }
+        }
+/* 1. LAYOUT HORIZONTAL COM SCROLL */
+#resultado {
+    /* Força o conteúdo a ficar em uma linha */
+    display: flex;
+    /* Permite que o conteúdo ultrapasse a div sem quebrar */
+    overflow-x: auto; 
+    /* Esconde a barra de rolagem horizontal (opcional, para visual mais limpo) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    /* Garante que o container #resultado tenha altura para o scroll */
+    min-height: 590px; 
+    padding: 20px 0; /* Espaçamento vertical */
+    /* Remove o espaçamento padrão que força justificação */
+    justify-content: flex-start !important; 
+}
+#resultado::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+/* 2. ESTRUTURA BASE DA CARTA E AMBIENTE 3D */
+.card-container {
+    width: 400px;  /* CORREÇÃO: Largura final desejada */
+    height: 700px; /* CORREÇÃO: Altura final desejada */
+    perspective: 1000px;
+    margin: 0 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* 3. O ELEMENTO QUE VAI GIRAR (O 'CORPO' DA CARTA) */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s; /* O tempo da animação de giro */
+    transform-style: preserve-3d; /* Essencial para o efeito 3D */
+}
+
+/* 4. O GIRO DE 180 GRAUS AO CLICAR */
+.card-container.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 5. FRENTE E VERSO DA CARTA (O QUE ESTÁ DENTRO) */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--cor-principal);
+    
+    /* CORREÇÃO CRÍTICA: Impede que o conteúdo (imagem) ultrapasse a borda */
+    overflow: hidden; 
+}
+
+.card-front {
+    background: var(--cor-principal); /* Cor de destaque para o Verso (Fundo da carta) */
+    color: var(--cor-texto-claro);
+    /* Se você manteve a animação @keyframes breath, ela será aplicada aqui: */
+    animation: breath 4s ease-in-out infinite alternate; 
+}
+
+.card-back {
+    background: rgba(60, 20, 10, 0.9) !important; /* Cor de fundo para o Significado (Frente da carta) */
+    color: var(--cor-texto, #F5F5DC);
+    transform: rotateY(180deg); /* O verso começa virado */
+    /* Estilo do significado */
+    padding: 20px;
+    text-align: left;
+    justify-content: flex-start; /* Alinha o texto do significado no topo */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 10px; 
+    text-align: left;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Estilização para o texto do significado (Verso) */
+.card-back h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--cor-secundaria);
+    font-size: 1.1em; 
+    text-shadow: var(--sombra-texto);
+    margin-top: 0;
+    margin-bottom: 5px !important;
+}
+
+.card-back p {
+    font-size: 1.2em; 
+    line-height: 1.6;
+    text-align: left;
+    
+    /* CORREÇÃO DE VISIBILIDADE: */
+    color: white !important; /* FORÇA A COR BRANCA (alto contraste) */
+    z-index: 10; /* Garante que fique acima de outros elementos */
+    position: relative; /* Garante que o z-index funcione */
+  margin-bottom: 5px !important;
+}
+/* ESTILIZAÇÃO DO VERSO PARA CABER O SIGNIFICADO EXPANDIDO */
+.card-back {
+   
+    /* Remove o padding padrão para dar mais espaço */
+    padding: 5px 10px 5px 10px !important; 
+    text-align: left;
+}
+
+.significado-container {
+    width: 100%;
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
+    padding: 0 !important;
+}
+
+/* Garante que os títulos das seções não sejam muito grandes */
+.significado-container h4 {
+    font-size: 0.9em;
+    color: var(--cor-secundaria);
+    margin: 8px 0 2px 0;
+    font-weight: bold;
+}
+
+/* Estilo para a frase de impacto */
+.frase-impacto {
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
+    font-size: 1.0em;
+}
+/* Estilização para a seção final do oráculo */
+.conselho-final {
+    background-color: rgba(60, 20, 10, 0.8) !important;
+    
+    color: var(--cor-texto-claro, white); 
+    padding: 30px;
+    margin-top: 50px; 
+    border-radius: 15px;
+    
+    /* MUDANÇA: Foco na sombra dourada para dar destaque */
+    box-shadow: 0 0 15px var(--cor-secundaria, gold), /* Brilho visível do dourado */
+                0 0 30px rgba(0, 0, 0, 0.8); /* Sombra escura para profundidade */
+    
+    border: 1px solid var(--cor-secundaria); /* ADICIONA uma borda sutilmente dourada */
+    text-align: center;
+}
+/* ... (e as regras subsequentes para h3, p, ul, etc.) ... */
+
+
+
+
+.conselho-final h3 {
+    color: var(--cor-secundaria); 
+    font-size: 1.3em;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    /* MUDANÇA: Destaque maior no texto do título */
+    text-shadow: 0 0 8px var(--cor-secundaria, gold); 
+}
+/* CORREÇÃO PARA FORÇAR A IMAGEM A CABER NO CONTÊINER 3D */
+.card-front img { /* Seleciona qualquer imagem dentro do .card-front */
+    width: 100%;       
+    height: 100%;      
+    object-fit: cover; /* Faz com que a imagem preencha o espaço sem distorcer demais */
+    border-radius: 10px; /* Mantém o arredondamento */
+}
+/* DICA VISUAL DE CLIQUE PARA A USABILIDADE */
+
+.click-hint {
+    /* Posicionamento e aparência */
+    position: absolute; /* Permite posicionar sobre a carta */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza o elemento */
+    
+    padding: 10px 20px;
+    border-radius: 8px;
+    
+    /* Cores e fontes para destacar */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente escuro */
+    border: 2px solid var(--cor-secundaria); /* Borda dourada */
+    color: var(--cor-secundaria); /* Texto dourado */
+    text-align: center;
+    pointer-events: none; /* Garante que o clique passe para a carta */
+    z-index: 5; /* Garante que fique acima da imagem de fundo */
+    
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.click-hint h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5em;
+    margin: 0;
+    line-height: 1;
+}
+
+.click-hint p {
+    font-size: 0.9em;
+    margin: 5px 0 0 0;
+    font-style: italic;
+    line-height: 1;
+}
+
+/* Efeito extra: Animação sutil de pulso */
+.card-front:not(.clicked) .click-hint {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Oculta a dica quando a carta é virada (a classe .is-flipped é aplicada) */
+.card-container.is-flipped .click-hint {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.5s ease-out 0.3s; /* Delay para o giro terminar */
+}
